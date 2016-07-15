@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs4">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4163"
+       x="-0.0348"
+       width="1.0696"
+       y="-0.0348"
+       height="1.0696">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="4.35"
+         id="feGaussianBlur4165" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="119.41203"
+     inkscape:cy="875.48234"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1332"
+     inkscape:window-height="702"
+     inkscape:window-x="1936"
+     inkscape:window-y="361"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       ry="29.285715"
+       y="132.3622"
+       x="120"
+       height="300"
+       width="300"
+       id="rect4153"
+       style="fill:#000000;fill-opacity:0.90640396;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4163)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#404040;stroke-width:1.687;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3338"
+       width="297.99222"
+       height="299.00238"
+       x="121.00388"
+       y="132.35593"
+       ry="29.188328"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#2a2c2b;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 120 187.36133 L 120 403.07617 C 120 419.30046 133.06087 432.36133 149.28516 432.36133 L 390.71484 432.36133 C 406.93913 432.36133 420 419.30046 420 403.07617 L 420 187.36133 L 120 187.36133 z "
+       id="rect4142"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <circle
+       style="fill:#2462db;fill-opacity:1;stroke:#404040;stroke-width:1.13368988;stroke-opacity:0.52941176"
+       id="path4147"
+       cx="308.92859"
+       cy="160.57648"
+       r="14.576012"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <circle
+       r="14.576012"
+       cy="160.57648"
+       cx="349.64288"
+       id="circle4149"
+       style="fill:#dc9323;fill-opacity:1;stroke:#404040;stroke-width:1.13368988;stroke-opacity:0.5294117"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <circle
+       style="fill:#b61616;fill-opacity:1;stroke:#404040;stroke-width:1.13368988;stroke-opacity:0.52941179"
+       id="circle4151"
+       cx="390.35718"
+       cy="160.57648"
+       r="14.576012"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:67.11484528px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#bfbfbf;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="155.92442"
+       y="322.36221"
+       id="text4167"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4169"
+         x="155.92442"
+         y="322.36221"
+         style="fill:#bfbfbf;fill-opacity:1">&lt;?PHP</tspan></text>
+  </g>
+</svg>

@@ -1,3 +1,76 @@
-.test {
-  font-size: 22px;
+// color theme 'Flat UI'
+$dark-blue: #2980B9;
+$light-blue: #3498DB;
+$white: #ECF0F1;
+$red: #E74C3C;
+$dark: #2C3E50;
+$orange: #e99516;
+$bg: #a7a7a7;
+
+$bold: 700;
+
+body {
+    color: $dark;
+}
+
+.main-header {
+    padding-top: 30px;
+}
+
+#site-name-header {
+    font-weight: $bold;
+}
+
+.little-help {
+    color: $bg;
+}
+
+.blog-body {
+    padding-top: 25px;
+}
+
+.logo {
+    img {
+        width: 128px;
+    }
+}
+
+// placeholder
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $dark !important;
+}
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $dark !important;
+}
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: $dark !important;
+}
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: $dark !important;
+}
+
+// bootstrap
+.form-control {
+    border-radius: 0;
+    border: 1px solid $light-blue;
+}
+.btn-default {
+    color: $white;
+    background-color: $dark;
+    border-color: $dark;
+    border-radius: 0;
+}
+
+// other
+.tags-header {
+    a {
+        font-weight: $bold;
+        font-size: 18px;
+        color: $dark;
+        text-decoration: none;
+    }
 }

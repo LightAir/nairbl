@@ -17,4 +17,5 @@ App::get('/', 'Blog@index');
 App::group(['prefix' => 'api/v1', 'namespace' => 'App\Http\Controllers'], function ()
 {
     App::get('/about', 'Api@about');
+    App::get('/news/{offset:[0-9]+}', 'Api@news');
 });

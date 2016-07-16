@@ -32,7 +32,8 @@
 
 <div class="row">
     <div v-for="bn in bodynews">
-        <bodynews :bodynews="bn"></bodynews>
+        <div>qwe</div>
+        <!-- <bodynews :bodynews="bn"></bodynews> -->
     </div>
 </div>
 
@@ -40,7 +41,7 @@
 
 <script>
 
-import bodynews from './bodynews.vue';
+import Bodynews from './bodynews.vue';
 
 export default {
     data() {
@@ -50,7 +51,6 @@ export default {
             }
         },
         ready() {
-
             this.$http.get('/api/v1/about').then((response) => {
 
                 // get status
@@ -69,11 +69,28 @@ export default {
 
             }, (response) => {
                 // error callback
+            }),
+            this.$http.get('/api/v1/news/0').then((response) => {
+
+                // get status
+                response.status;
+                // get status text
+                response.statusText;
+                // get all headers
+                response.headers;
+                // get 'Expires' header
+                response.headers['Expires'];
+                // set data on vm
+                console.log(response.json())
+
+            }, (response) => {
+              this.$set('bodynews', response.json())
+                // error callback
             });
 
         },
         components: {
-            bodynews
+            bodynews: Bodynews
         }
 
 }

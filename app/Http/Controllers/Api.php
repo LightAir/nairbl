@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
+
 /**
  * General controller
  */
@@ -22,9 +24,19 @@ class Api extends Controller
       return response()->json($data);
     }
 
-    public function news()
+    /**
+     * Return news
+     *
+     * @param  int $offset
+     *
+     * @return mixed
+     */
+    public function news($offset)
     {
       $npp = env('NPP', 10);
+      $data = Posts::find([], $offset?:0, $npp);
+
+      return response()->json($data);
     }
 
 

@@ -12,3 +12,9 @@
 */
 
 App::get('/', 'Blog@index');
+
+
+App::group(['prefix' => 'api/v1', 'namespace' => 'App\Http\Controllers'], function ()
+{
+    App::get('/about', 'Api@about');
+});

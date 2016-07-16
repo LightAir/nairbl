@@ -16,13 +16,11 @@ class Blog extends Controller
 
       // TODO getting data from database
       $data = [
-        'title' => 'My blog',
-        'snHeader' => 'Header',
-        'littleHelp' => '/php, coding, js, css/'
+        'title' => 'My blog'
       ];
 
       return view('main', $data);
     }
 
-    
+
 }

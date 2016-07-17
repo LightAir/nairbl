@@ -6478,3 +6478,17 @@ body {
   font-size: 18px;
   color: #2C3E50;
   text-decoration: none; }
+
+.news-body {
+  padding-top: 15px; }
+  .news-body .news-title {
+    font-size: 25px; }
+  .news-body .news-block {
+    padding-bottom: 15px; }
+    .news-body .news-block .news-tags {
+      font-size: 12px;
+      color: #3498DB; }
+    .news-body .news-block .news-date {
+      float: right;
+      font-size: 12px;
+      color: #E74C3C; }

@@ -3,9 +3,9 @@ $dark-blue: #2980B9;
 $light-blue: #3498DB;
 $white: #ECF0F1;
 $red: #E74C3C;
-$dark: #2C3E50;
 $orange: #e99516;
 $bg: #a7a7a7;
+$dark: #2C3E50;
 
 $bold: 700;
 
@@ -72,5 +72,24 @@ body {
         font-size: 18px;
         color: $dark;
         text-decoration: none;
+    }
+}
+
+.news-body {
+    padding-top: 15px;
+    .news-title {
+        font-size: 25px;
+    }
+    .news-block {
+        padding-bottom: 15px;
+        .news-tags {
+          font-size: 12px;
+          color: $light-blue;
+        }
+        .news-date {
+          float: right;
+          font-size: 12px;
+          color: $red;
+        }
     }
 }

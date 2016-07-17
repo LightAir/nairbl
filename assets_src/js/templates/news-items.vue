@@ -12,7 +12,8 @@
 
 <template id="test-templ">
     <div class="news-block">
-        <a href="/post/{{ list.slug }}" class="news-title">{{ list.title }}</a>
+
+        <a href="/post/{{ list.slug }}" v-link="{ name: 'post', params: { listSlug: 123 }}" class="news-title">{{ list.title }}</a>
 
         <p class="news-text">
             {{ list.text }}
@@ -33,6 +34,19 @@
 </template>
 
 <script>
+
+var VueRouter = require('vue-router');
+var router = new VueRouter();
+var App = Vue.extend({});
+
+router.map({
+  '/user/:listSlug': {
+    name: 'user',
+    // component: { ... }
+  }
+})
+
+router.start(App, '#app');
 
 export default {
     data: function() {

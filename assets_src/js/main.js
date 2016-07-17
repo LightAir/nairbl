@@ -10,6 +10,18 @@ Vue.use(VueRes);
 
 var App = require('./templates/app.vue');
 
+// 
+// var  Post = require('./templates/post.vue');
+// var router = new VueRouter()
+
+// router.map({
+//     '/foo': {
+//         component: Foo
+//     }
+// })
+//
+// router.start(App, '#app')
+
 new Vue({
     el: "#vueapp",
     components: {

@@ -11,6 +11,18 @@ Vue.use(VueRes);
 
 var App = require('./templates/app.vue');
 
+// 
+// var  Post = require('./templates/post.vue');
+// var router = new VueRouter()
+
+// router.map({
+//     '/foo': {
+//         component: Foo
+//     }
+// })
+//
+// router.start(App, '#app')
+
 new Vue({
     el: "#vueapp",
     components: {
@@ -74,6 +86,20 @@ if (module.hot) {(function () {  module.hot.accept()
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+
+var VueRouter = require('vue-router');
+var router = new VueRouter();
+var App = Vue.extend({});
+
+router.map({
+    '/user/:listSlug': {
+        name: 'user'
+    }
+});
+
+router.start(App, '#app');
+
 exports.default = {
     data: function data() {
         return {
@@ -101,7 +127,7 @@ exports.default = {
     }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div v-for=\"list in lists\">\n    <list :list=\"list\"></list>\n</div>\n\n<template id=\"test-templ\">\n    <div class=\"news-block\">\n        <a href=\"/post/{{ list.slug }}\" class=\"news-title\">{{ list.title }}</a>\n\n        <p class=\"news-text\">\n            {{ list.text }}\n        </p>\n        <div class=\"row news-footer\">\n            <div class=\"col-xs-6 news-tags\">\n                <!-- TODO add tags to news -->\n                <!-- {{ list.tags }} -->\n                test, one\n            </div>\n            <div class=\"col-xs-6\">\n                <span class=\"news-date\">{{ list.date }}</span>\n            </div>\n        </div>\n    </div>\n</template>\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div v-for=\"list in lists\">\n    <list :list=\"list\"></list>\n</div>\n\n<template id=\"test-templ\">\n    <div class=\"news-block\">\n\n        <a href=\"/post/{{ list.slug }}\" v-link=\"{ name: 'post', params: { listSlug: 123 }}\" class=\"news-title\">{{ list.title }}</a>\n\n        <p class=\"news-text\">\n            {{ list.text }}\n        </p>\n        <div class=\"row news-footer\">\n            <div class=\"col-xs-6 news-tags\">\n                <!-- TODO add tags to news -->\n                <!-- {{ list.tags }} -->\n                test, one\n            </div>\n            <div class=\"col-xs-6\">\n                <span class=\"news-date\">{{ list.date }}</span>\n            </div>\n        </div>\n    </div>\n</template>\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -112,7 +138,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-8a61588a", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":8,"vue-hot-reload-api":5}],4:[function(require,module,exports){
+},{"vue":8,"vue-hot-reload-api":5,"vue-router":7}],4:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};

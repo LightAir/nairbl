@@ -31,39 +31,17 @@
         <div style="padding: 10px">this is tags panel</div>
     </div>
     <div class="col-xs-12 col-sm-10">
-        <div v-for="list in lists">
-            <list :list="list"></list>
-        </div>
+        <newsitems></newsitems>
     </div>
 </div>
 
-<template id="test-templ">
-    <div class="news-block">
-        <a href="/post/{{ list.slug }}" class="news-title">{{ list.title }}</a>
 
-        <p class="news-text">
-            {{ list.text }}
-            <p>
-                <div class="row news-footer">
-                    <div class="col-xs-6 news-tags">
-                        <!-- TODO add tags to news -->
-                        <!-- {{ list.tags }} -->
-                        test, one
-                    </div>
-                    <div class="col-xs-6">
-                        <span class="news-date">{{ list.date }}</span>
-                    </div>
-                </div>
-    </div>
-
-    <!-- <pre>{{ list | json }}</pre> -->
-</template>
 
 </template>
 
 <script>
 
-import Home from './home.vue';
+import newsitems from './news-items.vue';
 
 export default {
     data: function() {
@@ -86,14 +64,8 @@ export default {
             })
     },
     components: {
-        // list: {
-        //     // template: Home,
-        //     template: '#test-templ',
-        //     props: ['list']
-        // }
-        list: Home
+      newsitems
     }
-
 }
 
 </script>

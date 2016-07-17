@@ -25,9 +25,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _home = require('./home.vue');
+var _newsItems = require('./news-items.vue');
 
-var _home2 = _interopRequireDefault(_home);
+var _newsItems2 = _interopRequireDefault(_newsItems);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53,17 +53,11 @@ exports.default = {
         });
     },
     components: {
-        // list: {
-        //     // template: Home,
-        //     template: '#test-templ',
-        //     props: ['list']
-        // }
-        list: _home2.default
+        newsitems: _newsItems2.default
     }
-
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"row main-header\">\n    <div class=\"col-xs-12 col-sm-2\">\n        <div class=\"logo\">\n            <a href=\"/\">\n                <img src=\"/assets/img/logo.png\" alt=\"logo\">\n            </a>\n        </div>\n    </div>\n    <div class=\"col-xs-12 col-sm-9 col-sm-offset-1 col-md-7 col-md-offset-0\">\n        <h1>\n        <span id=\"site-name-header\">{{ siteName }}</span>\n      </h1>\n        <span id=\"help-header\" class=\"little-help\">{{ siteHelp }}</span>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-3 col-lg-3\">\n        <div class=\"input-group\">\n            <input type=\"text\" class=\"form-control\" v-model=\"sn\" placeholder=\"Search for...\">\n            <span class=\"input-group-btn\">\n          <button class=\"btn btn-default\" type=\"button\">Go!</button>\n        </span>\n        </div>\n    </div>\n</div>\n\n<div class=\"row news-body\">\n    <div class=\"col-xs-12 col-sm-2\">\n        <div style=\"padding: 10px\">this is tags panel</div>\n    </div>\n    <div class=\"col-xs-12 col-sm-10\">\n        <div v-for=\"list in lists\">\n            <list :list=\"list\"></list>\n        </div>\n    </div>\n</div>\n\n<template id=\"test-templ\">\n    <div class=\"news-block\">\n        <a href=\"/post/{{ list.slug }}\" class=\"news-title\">{{ list.title }}</a>\n\n        <p class=\"news-text\">\n            {{ list.text }}\n            </p><p>\n                </p><div class=\"row news-footer\">\n                    <div class=\"col-xs-6 news-tags\">\n                        <!-- TODO add tags to news -->\n                        <!-- {{ list.tags }} -->\n                        test, one\n                    </div>\n                    <div class=\"col-xs-6\">\n                        <span class=\"news-date\">{{ list.date }}</span>\n                    </div>\n                </div>\n    </div>\n\n    <!-- <pre>{{ list | json }}</pre> -->\n</template>\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div class=\"row main-header\">\n    <div class=\"col-xs-12 col-sm-2\">\n        <div class=\"logo\">\n            <a href=\"/\">\n                <img src=\"/assets/img/logo.png\" alt=\"logo\">\n            </a>\n        </div>\n    </div>\n    <div class=\"col-xs-12 col-sm-9 col-sm-offset-1 col-md-7 col-md-offset-0\">\n        <h1>\n        <span id=\"site-name-header\">{{ siteName }}</span>\n      </h1>\n        <span id=\"help-header\" class=\"little-help\">{{ siteHelp }}</span>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-3 col-lg-3\">\n        <div class=\"input-group\">\n            <input type=\"text\" class=\"form-control\" v-model=\"sn\" placeholder=\"Search for...\">\n            <span class=\"input-group-btn\">\n          <button class=\"btn btn-default\" type=\"button\">Go!</button>\n        </span>\n        </div>\n    </div>\n</div>\n\n<div class=\"row news-body\">\n    <div class=\"col-xs-12 col-sm-2\">\n        <div style=\"padding: 10px\">this is tags panel</div>\n    </div>\n    <div class=\"col-xs-12 col-sm-10\">\n        <newsitems></newsitems>\n    </div>\n</div>\n\n\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -74,7 +68,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-2e5f4afc", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"./home.vue":3,"vue":8,"vue-hot-reload-api":5}],3:[function(require,module,exports){
+},{"./news-items.vue":3,"vue":8,"vue-hot-reload-api":5}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -91,33 +85,31 @@ exports.default = {
 
         this.$http.get('/api/v1/news/0').then(function (response) {
 
-            // get status
+            // TODO add error handler
             response.status;
-            // get status text
-            response.statusText;
-            // get all headers
-            response.headers;
-            // get 'Expires' header
-            response.headers['Expires'];
             // set data on vm
             _this.$set('lists', response.json());
         }, function (response) {
-
             // error callback
-
         });
+    },
+    components: {
+        list: {
+            template: '#test-templ',
+            props: ['list']
+        }
     }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"news-block\">\n    <a href=\"/post/{{ list.slug }}\" class=\"news-title\">{{ list.title }}</a>\n\n    <p class=\"news-text\">\n        {{ list.text }}\n        </p><p>\n            </p><div class=\"row news-footer\">\n                <div class=\"col-xs-6 news-tags\">\n                    <!-- TODO add tags to news -->\n                    <!-- {{ list.tags }} -->\n                    test, one\n                </div>\n                <div class=\"col-xs-6\">\n                    <span class=\"news-date\">{{ list.date }}</span>\n                </div>\n            </div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\n<div v-for=\"list in lists\">\n    <list :list=\"list\"></list>\n</div>\n\n<template id=\"test-templ\">\n    <div class=\"news-block\">\n        <a href=\"/post/{{ list.slug }}\" class=\"news-title\">{{ list.title }}</a>\n\n        <p class=\"news-text\">\n            {{ list.text }}\n        </p>\n        <div class=\"row news-footer\">\n            <div class=\"col-xs-6 news-tags\">\n                <!-- TODO add tags to news -->\n                <!-- {{ list.tags }} -->\n                test, one\n            </div>\n            <div class=\"col-xs-6\">\n                <span class=\"news-date\">{{ list.date }}</span>\n            </div>\n        </div>\n    </div>\n\n    <pre>{{ list | json }}</pre>\n</template>\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-3d93e194", module.exports)
+    hotAPI.createRecord("_v-8a61588a", module.exports)
   } else {
-    hotAPI.update("_v-3d93e194", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-8a61588a", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"vue":8,"vue-hot-reload-api":5}],4:[function(require,module,exports){

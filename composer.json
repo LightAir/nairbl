@@ -9,7 +9,8 @@
         "laravel/lumen-framework": "5.2.*",
         "vlucas/phpdotenv": "~2.2",
         "josegonzalez/dotenv": "^2.0",
-        "symfony/var-dumper": "^3.1"
+        "symfony/var-dumper": "^3.1",
+        "badcow/lorem-ipsum": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

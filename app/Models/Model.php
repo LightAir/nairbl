@@ -32,7 +32,7 @@ class Model
    */
   public static function find($args = [], $offset = 0, $limit = 0)
   {
-  
+
     $table = \DB::table(self::getTableName());
 
     foreach ($args as $key => $value) {
@@ -44,4 +44,30 @@ class Model
 
     return $table->get();
   }
+
+  /**
+   * Insert data to table and return id
+   *
+   * @param  array $data
+   *
+   * @return int
+   */
+  public static function insertGetId($data)
+  {
+      return \DB::table(self::getTableName())->insertGetId($data);
+  }
+
+  /**
+   * Insert data to table
+   *
+   * @param  array $data
+   *
+   * @return bool
+   */
+  public static function insert($data)
+  {
+      return (bool) self::insertGetId($data);
+  }
+
+
 }

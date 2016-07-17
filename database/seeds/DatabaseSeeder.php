@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call('UsersTableSeeder');
+      // run in console before first run
+      // ./artisan db:seed
+
+        $this->call('MkDataBase');
     }
 }

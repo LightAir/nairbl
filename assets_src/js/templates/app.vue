@@ -35,8 +35,6 @@
     </div>
 </div>
 
-
-
 </template>
 
 <script>
@@ -54,17 +52,17 @@ export default {
     ready: function() {
         this.$http.get('/api/v1/about').then((response) => {
 
-                // TODO add error handler
-                // response.status;
-                this.$set('siteName', response.json().siteName)
-                this.$set('siteHelp', response.json().siteHelp)
+            // TODO add error handler
+            // response.status;
+            this.$set('siteName', response.json().siteName)
+            this.$set('siteHelp', response.json().siteHelp)
 
-            }, (response) => {
-                // error callback
-            })
+        }, (response) => {
+            // error callback
+        })
     },
     components: {
-      newsitems
+        newsitems
     }
 }
 

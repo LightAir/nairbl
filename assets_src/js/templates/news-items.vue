@@ -28,8 +28,6 @@
             </div>
         </div>
     </div>
-
-    <pre>{{ list | json }}</pre>
 </template>
 
 </template>

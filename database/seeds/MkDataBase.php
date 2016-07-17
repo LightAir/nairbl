@@ -18,7 +18,7 @@ class MkDataBase extends Seeder {
 
       $text = implode('<p>', $paragraphs);
       $title = substr($text, 0, rand(20, 50));
-      $time = time();
+      $time = date('Y-m-d H:i:s');
 
       // HACK =))
       preg_match_all('/[\w\s\d]+/u', $title, $slugResult);

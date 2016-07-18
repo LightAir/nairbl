@@ -1,5 +1,3 @@
-
-
 var gulp = require('gulp');
 var webpack = require('webpack-stream');
 
@@ -21,10 +19,13 @@ var debug = true;
 
 
 gulp.task('scripts', function() {
-  return gulp.src('./assets_src/js/main.js')
-    .pipe(webpack( require('./webpack.config.js') ))
-    .pipe(gulp.dest('./public/assets/js/'))
-    .pipe(livereload());
+    return gulp.src('./assets_src/js/main.js')
+        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(gulp.dest('./public/assets/js/'))
+        .pipe(livereload())
+        .pipe(notify({
+            message: 'Compiled Scripts'
+        }));
 });
 
 
@@ -38,7 +39,10 @@ var cssWorker = function(path, dest, destName) {
             })
             .on('error', sass.logError)))
         .pipe(gulp.dest(dest))
-        .pipe(livereload());
+        .pipe(livereload())
+        .pipe(notify({
+            message: 'Compiled sass'
+        }));
 }
 
 // Styles
@@ -100,5 +104,5 @@ gulp.task('watch', ['default'], function() {
     watch('./assets_src/js/**/*.*', function(event, cb) {
         gulp.start('scripts');
     });
-        //notify("Add file: <%= file.relative %>");
+    //notify("Add file: <%= file.relative %>");
 });

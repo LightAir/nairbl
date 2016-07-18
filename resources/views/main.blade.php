@@ -3,8 +3,7 @@
 @section('title', $title)
 
 @section('content')
-<div id="vueapp" class="container">
-  <app>
-  </app>
+<div id="vueapp">
+  
 </div>
 @stop

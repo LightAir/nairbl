@@ -17,7 +17,7 @@ class Api extends Controller
       // TODO getting data from database
       $data = [
         'title' => 'My blog',
-        'siteName' => 'Header',
+        'siteName' => 'My first blog on vue.js',
         'siteHelp' => '/php, coding, js, css/'
       ];
 
@@ -55,5 +55,20 @@ class Api extends Controller
       return response()->json($result);
     }
 
+    /**
+     * Return one news by slug
+     *
+     * @param  string $slug
+     *
+     * @return mixed
+     */
+    public function getNewsBySlug($slug)
+    {
+        if(!$data = Posts::findFirst(['slug' => $slug])){
+            abort(404);
+        }
+
+        return response()->json($data);
+    }
 
 }

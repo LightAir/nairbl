@@ -22,7 +22,7 @@ class Model
   }
 
   /**
-   * Return data from database by args
+   * Return many data from database by args
    *
    * @param  array  $args  key-value array
    * @param  int $offset
@@ -43,6 +43,27 @@ class Model
     if($limit) $table->limit($limit);
 
     return $table->get();
+  }
+
+  /**
+   * Return data from database by args
+   *
+   * @param  array  $args  key-value array
+   * @param  int $offset
+   * @param  int $limit
+   *
+   * @return mixed
+   */
+  public static function findFirst($args = [])
+  {
+
+    $table = \DB::table(self::getTableName());
+
+    foreach ($args as $key => $value) {
+      $table->where($key, '=', $value);
+    }
+
+    return $table->first();
   }
 
   /**

@@ -18,4 +18,6 @@ App::group(['prefix' => 'api/v1', 'namespace' => 'App\Http\Controllers'], functi
 {
     App::get('/about', 'Api@about');
     App::get('/news/{offset:[0-9]+}', 'Api@news');
+    App::get('/item/{slug:[a-zA-Z_\-0-9]+}', 'Api@getNewsBySlug');
+
 });

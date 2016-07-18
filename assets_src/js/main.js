@@ -1,6 +1,15 @@
-var Vue = require('vue');
-var VueRes = require('vue-resource');
-var VueRouter = require('vue-router')
+
+
+import Vue from 'vue'
+import VueRes from 'vue-resource'
+import VueRouter from 'vue-router'
+
+
+// templates
+import App from './templates/app.vue';
+import News from './templates/news.vue'
+import Item from './templates/item.vue'
+
 
 Vue.config.debug = true;
 Vue.config.devtools = true;
@@ -8,23 +17,21 @@ Vue.config.devtools = true;
 Vue.use(VueRouter)
 Vue.use(VueRes);
 
-var App = require('./templates/app.vue');
+var router = new VueRouter();
 
-// 
-// var  Post = require('./templates/post.vue');
-// var router = new VueRouter()
-
-// router.map({
-//     '/foo': {
-//         component: Foo
-//     }
-// })
-//
-// router.start(App, '#app')
-
-new Vue({
-    el: "#vueapp",
-    components: {
-        app: App
+router.map({
+    '/home': {
+        component: News
     }
+    ,
+    '/news/:slug': {
+      name: 'news',
+      component: Item
+    },
 })
+
+router.redirect({
+    '*': '/home'
+})
+
+router.start(App, '#vueapp');

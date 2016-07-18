@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="css">
 
 
 
@@ -7,13 +7,11 @@
 <template>
 
 <div v-for="list in lists">
-    <list :list="list"></list>
-</div>
-
-<template id="test-templ">
+    <!-- <list :list="list"></list> -->
     <div class="news-block">
 
-        <a href="/post/{{ list.slug }}" v-link="{ name: 'post', params: { listSlug: 123 }}" class="news-title">{{ list.title }}</a>
+        <a v-link="{ name: 'news', params: { slug: list.slug }}" class="news-title">{{ list.title }}</a>
+        <!-- <a href="/post/{{ list.slug }}"  class="news-title">{{ list.title }}</a> -->
 
         <p class="news-text">
             {{ list.text }}
@@ -29,24 +27,13 @@
             </div>
         </div>
     </div>
-</template>
+</div>
+
+
 
 </template>
 
 <script>
-
-var VueRouter = require('vue-router');
-var router = new VueRouter();
-var App = Vue.extend({});
-
-router.map({
-  '/user/:listSlug': {
-    name: 'user',
-    // component: { ... }
-  }
-})
-
-router.start(App, '#app');
 
 export default {
     data: function() {
@@ -65,13 +52,14 @@ export default {
         }, (response) => {
             // error callback
         });
-    },
-    components: {
-        list: {
-            template: '#test-templ',
-            props: ['list']
-        }
     }
+    // ,
+    // components: {
+    //     list: {
+    //         template: '#test-templ',
+    //         props: ['list']
+    //     }
+    // }
 }
 
 </script>

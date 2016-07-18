@@ -1,45 +1,42 @@
-// Load plugins
-var gulp, gutil, guglify, gsass, gconcat, gwatch, rm, gIf, browserify, vueify,
-    livereload, notify, plumber, babelify, through2;
 
-notify = require("gulp-notify");
-plumber = require('gulp-plumber');
-babelify = require('babelify');
 
-gulp = require('gulp');
-gutil = require('gulp-util');
-guglify = require('gulp-uglify');
-gsass = require('gulp-sass');
-gconcat = require('gulp-concat-util');
-// gconcat = require('gulp-concat');
-gwatch = require('gulp-watch');
-rm = require('gulp-rm');
-gIf = require('gulp-if');
-browserify = require('browserify');
-vueify = require('gulp-vueify');
-livereload = require('gulp-livereload');
-through2 = require('through2');
+var gulp = require('gulp');
+var webpack = require('webpack-stream');
 
+var livereload = require('gulp-livereload');
+var notify = require("gulp-notify");
+var plumber = require('gulp-plumber');
+var watch = require('gulp-watch');
+
+// proc...
+var sass = require('gulp-sass');
+
+// helpers
+var gulpif = require('gulp-if');
+var concat = require('gulp-concat-util');
+var rm = require('gulp-rm');
+
+// env
 var debug = true;
 
-// src path
-var srcPath = {
-    js: './public/assets/js/'
-};
 
-// build css/scss
+gulp.task('scripts', function() {
+  return gulp.src('./assets_src/js/main.js')
+    .pipe(webpack( require('./webpack.config.js') ))
+    .pipe(gulp.dest('./public/assets/js/'))
+    .pipe(livereload());
+});
+
+
 var cssWorker = function(path, dest, destName) {
     return gulp.src(path)
-        .pipe(plumber({
-            errorHandler: notify.onError("Error: <%= error.message %>")
-        }))
-        .pipe(gconcat(destName))
-        .pipe(gIf(debug, gsass()
-            .on('error', gsass.logError)))
-        .pipe(gIf(!debug, gsass({
+        .pipe(concat(destName))
+        .pipe(gulpif(debug, sass()
+            .on('error', sass.logError)))
+        .pipe(gulpif(!debug, sass({
                 outputStyle: 'compressed'
             })
-            .on('error', gsass.logError)))
+            .on('error', sass.logError)))
         .pipe(gulp.dest(dest))
         .pipe(livereload());
 }
@@ -52,46 +49,11 @@ gulp.task('styles', function() {
     ], './public/assets/css/', 'main.css');
 });
 
-// build js
-// var jsWorker = function(path, dest, destName) {
-//     return gulp.src(path)
-//         .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-//         .pipe(gconcat(destName))
-//         // .pipe(browserify().transform("babelify", {presets: ["es2015"]}))
-//         .pipe(gIf(!debug, guglify()))
-//         .pipe(gulp.dest(dest))
-//         .pipe(livereload()));
-// }
-
-
-var jsWorker = function(path, dest, destName) {
-
-    return gulp.src(path)
-        .pipe(plumber({
-            errorHandler: notify.onError("Error: <%= error.message %>")
-        }))
-        .pipe(through2.obj(function (file, enc, next){
-            browserify(file.path)
-                .transform('vueify')
-                .bundle(function(err, res){
-                    // assumes file.contents is a Buffer
-                    file.contents = res;
-                    next(null, file);
-                });
-        }))
-        .pipe(gIf(!debug, guglify()))
-        .pipe(gulp.dest(dest))
-        .pipe(livereload());
-
-}
-
 
 // Scripts
-gulp.task('scripts', function() {
-    jsWorker('./assets_src/js/**/*.js', srcPath.js, 'all.js');
-
-
-});
+// gulp.task('scripts', function() {
+//     jsWorker('./assets_src/js/**/*.js', srcPath.js, 'all.js');
+// });
 
 // Images
 gulp.task('images', function() {
@@ -120,8 +82,9 @@ gulp.task('clean', function() {
         .pipe(rm())
 });
 
-// Default task
+// Build task
 gulp.task('default', ['clean'], function() {
+    debug = false;
     gulp.run('styles', 'scripts', 'images', 'fonts');
 });
 
@@ -130,14 +93,12 @@ gulp.task('watch', ['default'], function() {
     livereload.listen();
 
     // scss
-    gwatch('./assets_src/sass/**/*.scss', function(event, cb) {
+    watch('./assets_src/sass/**/*.scss', function(event, cb) {
         gulp.start('styles');
-    }).on('change', function() {
-        notify("File: <%= file.relative %>");
-    })
-
+    });
     // js
-    gwatch('./assets_src/js/**/*.*', function(event, cb) {
+    watch('./assets_src/js/**/*.*', function(event, cb) {
         gulp.start('scripts');
     });
+        //notify("Add file: <%= file.relative %>");
 });

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "vue": "^1.0.26",
+    "vue-markdown": "^1.2.0",
     "vue-resource": "^0.9.3",
     "vue-router": "^0.7.13",
     "vue-strap": "^1.0.11"
@@ -27,6 +28,7 @@
     "gulp-rm": "^1.0.1",
     "gulp-sass": "^2.3.2",
     "gulp-watch": "^4.3.8",
+    "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "node-sass": "^3.8.0",

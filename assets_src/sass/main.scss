@@ -83,13 +83,41 @@ body {
     .news-block {
         padding-bottom: 15px;
         .news-tags {
-          font-size: 12px;
-          color: $light-blue;
+            font-size: 12px;
+            color: $light-blue;
         }
         .news-date {
-          float: right;
-          font-size: 12px;
-          color: $red;
+            font-size: 10px;
+            color: $bg;
         }
+        .news-text {
+            margin-top: 15px;
+        }
+    }
+}
+
+.footer {
+    padding-top: 55px;
+    .inf {
+        font-size: 11px;
+        padding-bottom: 8px;
+        color: $bg;
+    }
+
+}
+
+.block-tags {
+    .favorite-tags-title {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .favorite-tags {
+        padding-left: 10px;
+        font-size: 12px;
+    }
+
+    a {
+        color: $dark-blue !important;
     }
 }

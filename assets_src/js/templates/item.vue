@@ -6,15 +6,13 @@
 
 <template>
 
-<div class="col-xs-10">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2><span class="n-title">{{ news.title }}</span></h2>
-        </div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2><span class="n-title">{{ news.title }}</span></h2>
+    </div>
 
-        <div class="col-xs-12">
-            <span class="n-text">{{ news.text }}</span>
-        </div>
+    <div class="col-xs-12">
+        <span class="n-text">{{ news.text }}</span>
     </div>
 </div>
 

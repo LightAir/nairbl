@@ -29,16 +29,29 @@
         </div>
 
         <div class="row news-body">
-            <div class="col-xs-12 col-sm-2">
-                <!-- TODO add tag menu  -->
-                <div style="padding: 10px">tags</div>
+            <div class="col-xs-12 col-sm-2 block-tags">
+                <div class="favorite-tags-title">Tags</div>
+                <div v-for="tag in favTags">
+                    <a v-link="{ name: 'tags', params: { slug: tag.route }}" class="favorite-tags">{{ tag.keyword }}</a>
+                </div>
             </div>
             <div class="col-xs-12 col-sm-10">
                 <router-view></router-view>
             </div>
         </div>
 
+        <!-- <modal :show.sync="showModal">
+            <div slot="modal-header" class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div slot="modal-body" class="modal-body">...</div>
+        </modal> -->
         <!-- TODO add footer -->
+        <div class="row footer">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">
+                <p class="inf">NAirBL</p>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -47,12 +60,19 @@
 
 <script>
 
+import {
+    modal
+}
+from 'vue-strap'
+
 export default {
     data: function() {
         return {
+            title: 'test modal',
+            showModal: false,
+            favTags: [],
             siteName: '',
-            siteHelp: '',
-            lists: []
+            siteHelp: ''
         }
     },
     ready: function() {
@@ -60,12 +80,17 @@ export default {
 
             // TODO add error handler
             // response.status;
-            this.$set('siteName', response.json().siteName)
-            this.$set('siteHelp', response.json().siteHelp)
+            this.$set('siteName', response.json().siteName);
+            this.$set('siteHelp', response.json().siteHelp);
+            this.$set('favTags', response.json().tags);
 
         }, (response) => {
             // error callback
+            // this.showModal = true;
         })
+    },
+    components: {
+        modal
     }
 }
 

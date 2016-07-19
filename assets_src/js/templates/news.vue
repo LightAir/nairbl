@@ -7,29 +7,25 @@
 <template>
 
 <div v-for="list in lists">
-    <!-- <list :list="list"></list> -->
     <div class="news-block">
-
         <a v-link="{ name: 'news', params: { slug: list.slug }}" class="news-title">{{ list.title }}</a>
-        <!-- <a href="/post/{{ list.slug }}"  class="news-title">{{ list.title }}</a> -->
-
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="news-date">{{ list.date }}</span>
+            </div>
+        </div>
         <p class="news-text">
             {{ list.text }}
         </p>
         <div class="row news-footer">
-            <div class="col-xs-6 news-tags">
+            <div class="col-xs-12 news-tags">
                 <!-- TODO add tags to news -->
                 <!-- {{ list.tags }} -->
                 test, one
             </div>
-            <div class="col-xs-6">
-                <span class="news-date">{{ list.date }}</span>
-            </div>
         </div>
     </div>
 </div>
-
-
 
 </template>
 
@@ -42,24 +38,28 @@ export default {
         }
     },
     ready: function() {
-        this.$http.get('/api/v1/news/0').then((response) => {
+            this.$http.get('/api/v1/news/0').then((response) => {
+                // this.$http.get('/api/v1/news/0', param, {
+                //     headers: {
+                //         'Cache-Control': 'no-cache'
+                //     }
+                // }).then((response) => {
+                // TODO add error handler
+                response.status;
+                // set data on vm
+                this.$set('lists', response.json())
 
-            // TODO add error handler
-            response.status;
-            // set data on vm
-            this.$set('lists', response.json())
-
-        }, (response) => {
-            // error callback
-        });
-    }
-    // ,
-    // components: {
-    //     list: {
-    //         template: '#test-templ',
-    //         props: ['list']
-    //     }
-    // }
+            }, (response) => {
+                // error callback
+            });
+        }
+        // ,
+        // components: {
+        //     list: {
+        //         template: '#test-templ',
+        //         props: ['list']
+        //     }
+        // }
 }
 
 </script>

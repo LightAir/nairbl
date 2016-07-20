@@ -10,6 +10,8 @@ import VueRouter from 'vue-router';
 import App from './templates/app.vue';
 import News from './templates/news.vue';
 import Item from './templates/item.vue';
+import Tags from './templates/tags.vue';
+import Tag from './templates/tag.vue';
 
 
 Vue.config.debug = true;
@@ -18,24 +20,34 @@ Vue.config.devtools = true;
 Vue.use(VueRouter);
 Vue.use(VueRes);
 
-var router = new VueRouter();
+var router = new VueRouter({
+    hashbang: false,
+    history: true,
+    linkActiveClass: "active",
+    mode: 'html5'
+});
 
 router.map({
-    '/home': {
+    '/': {
         component: News
     },
     '/news/:slug': {
         name: 'news',
         component: Item
     },
-    '/tags/:slug': {
+    '/tags': {
         name: 'tags',
-        component: Item
+        component: Tags
+    },
+    '/tag/:slug': {
+        name: 'tag',
+        component: Tag
     },
 })
 
+
 router.redirect({
-    '*': '/home'
+    '*': '/'
 })
 
 router.start(App, '#vueapp');

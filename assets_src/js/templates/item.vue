@@ -8,13 +8,14 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h2><span class="n-title">{{ news.title }}</span></h2>
+        <h1><span class="n-title">{{ news.title }}</span></h1>
     </div>
-
+    <div class="col-xs-12 post-date">
+        <span>{{ news.created_at }}</span>
+    </div>
     <div class="col-xs-12">
-
-        <vue-markdown></vue-markdown>
-        <span class="n-text">{{ news.text }}</span>
+        <vue-markdown :id="id" :source="model"></vue-markdown>
+        <!-- <span class="n-text">{{ news.text }}</span> -->
     </div>
 </div>
 
@@ -23,27 +24,26 @@
 <script>
 
 import VueMarkdown from 'vue-markdown'
+import Prism from 'prismjs'
+import Uuid from 'node-uuid'
 
 export default {
-    methods: {
-        allRight: function(htmlStr) {
-            console.log("markdown is parsed !");
-        },
-        tocAllRight: function(tocHtmlStr) {
-            console.log("toc is parsed :", tocHtmlStr);
+    props: {
+        model: {
+            type: String
         }
     },
     data: function() {
         return {
             news: [],
-            source: "sdfsdf",
-            show: true,
-            html: false,
-            breaks: true,
-            linkify: false,
-            emoji: true,
-            typographer: true,
-            toc: false
+            id: 'markdown-' + Uuid.v4()
+        }
+    },
+    events: {
+        rendered() {
+            for (const code of document.querySelectorAll(`#${this.id} code`)) {
+                Prism.highlightElement(code)
+            }
         }
     },
     ready: function() {
@@ -53,8 +53,8 @@ export default {
             response.status;
             // set data on vm
             this.$set('news', response.json());
-            this.source = response.json().text;
-            console.log(this.news);
+            this.model = response.json().text;
+            //console.log(this.model);
 
         }, (response) => {
             // error callback

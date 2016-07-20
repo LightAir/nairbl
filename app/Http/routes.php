@@ -11,13 +11,23 @@
 |
 */
 
-App::get('/', 'Blog@index');
-
-
+/**
+ * API
+ *
+ * @static
+ */
 App::group(['prefix' => 'api/v1', 'namespace' => 'App\Http\Controllers'], function ()
 {
     App::get('/about', 'Api@about');
     App::get('/news/{offset:[0-9]+}', 'Api@news');
     App::get('/item/{slug:[a-zA-Z_\-0-9]+}', 'Api@getNewsBySlug');
 
+    // for page 'tags'
+    App::get('/tags', 'Api@getTags');
+
 });
+
+/**
+ * all
+ */
+App::get('/{path:[\/\w\.-]*}', 'Blog@index');

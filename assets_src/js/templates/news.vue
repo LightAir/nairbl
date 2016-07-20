@@ -15,7 +15,8 @@
             </div>
         </div>
         <p class="news-text">
-            {{ list.text }}
+          <vue-markdown :source="list.text"></vue-markdown>
+
         </p>
         <div class="row news-footer">
             <div class="col-xs-12 news-tags">
@@ -24,12 +25,18 @@
                 test, one
             </div>
         </div>
+        <div class="row news-comments-counter">
+            <div class="col-xs-12">
+                no comments
+            </div>
+        </div>
     </div>
 </div>
 
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
 
 export default {
     data: function() {
@@ -52,6 +59,9 @@ export default {
             }, (response) => {
                 // error callback
             });
+        },
+        components: {
+            VueMarkdown
         }
         // ,
         // components: {

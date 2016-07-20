@@ -49,7 +49,9 @@ var cssWorker = function(path, dest, destName) {
 gulp.task('styles', function() {
     cssWorker([
         './bower_components/bootstrap/dist/css/bootstrap.css',
-        './assets_src/sass/**/*.scss'
+        './node_modules/prismjs/themes/prism-coy.css',
+        './assets_src/sass/**/*.scss',
+        //'./node_modules/prismjs/themes/prism-okaidia.css'
     ], './public/assets/css/', 'main.css');
 });
 

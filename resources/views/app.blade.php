@@ -9,6 +9,7 @@
     <!-- <link rel="icon" href=""> -->
     <title>{{ $title }}</title>
     <link rel="stylesheet" href="/assets/css/main.css" type="text/css" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:400,700&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
     @yield('css')
   </head>
   <body>

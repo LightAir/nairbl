@@ -12,13 +12,11 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-9 col-sm-offset-1 col-md-7 col-md-offset-0">
-                <h1>
-            <span id="site-name-header">{{ siteName }}</span>
-          </h1>
+            <div class="col-xs-12 col-sm-9 col-sm-offset-1 col-md-7 col-md-offset-0 site-header">
+                <span id="site-name-header">{{ siteName }}</span>
                 <span id="help-header" class="little-help">{{ siteHelp }}</span>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 search-block">
                 <div class="input-group">
                     <input type="text" class="form-control" v-model="sn" placeholder="Search for...">
                     <span class="input-group-btn">
@@ -30,9 +28,9 @@
 
         <div class="row news-body">
             <div class="col-xs-12 col-sm-2 block-tags">
-                <div class="favorite-tags-title">Tags</div>
+                <div class="favorite-tags-title"><a v-link="{ path: '/tags' }">Tags</a></div>
                 <div v-for="tag in favTags">
-                    <a v-link="{ name: 'tags', params: { slug: tag.route }}" class="favorite-tags">{{ tag.keyword }}</a>
+                    <a v-link="{ name: 'tag', params: { slug: tag.route }}" class="favorite-tags">{{ tag.keyword }}</a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-10">

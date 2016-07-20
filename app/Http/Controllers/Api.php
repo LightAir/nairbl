@@ -23,7 +23,7 @@ class Api extends Controller
             'siteName' => $settings['siteName']->setting,
             'siteHelp' => $settings['siteHelp']->setting,
             // TODO add blog author name
-            'tags' => Keywords::find(['is_favourite' => 1])
+            'tags' => Keywords::find(['is_favourite' => 1]),
         ];
 
         return response()->json($result);
@@ -72,6 +72,39 @@ class Api extends Controller
             abort(404);
         }
 
+        // TODO add modifer
         return response()->json($data);
+    }
+
+    /**
+     * Return tags.
+     *
+     * TODO move to model
+     *
+     * @return mixed
+     */
+    public function getTags()
+    {
+        $favorite = [];
+        $regular = [];
+        // TODO add alone tags
+        //$alone = [];
+
+        // TODO add to cache
+        $tags = Keywords::find();
+
+        foreach ($tags as $key => $value) {
+            if ($value->is_favourite) {
+                $favorite[] = $value;
+            } else {
+                $regular[] = $value;
+            }
+        }
+
+        return response()->json([
+          'favorite' => $favorite,
+          'regular' => $regular
+          //'alone' => $alone,
+        ]);
     }
 }

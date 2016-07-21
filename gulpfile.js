@@ -53,6 +53,8 @@ gulp.task('styles', function() {
         './assets_src/sass/**/*.scss',
         //'./node_modules/prismjs/themes/prism-okaidia.css'
     ], './public/assets/css/', 'main.css');
+
+    cssWorker('./assets_src/sass/animate.css', './public/assets/css/', 'animate.css')
 });
 
 

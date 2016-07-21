@@ -103,8 +103,20 @@ class Api extends Controller
 
         return response()->json([
           'favorite' => $favorite,
-          'regular' => $regular
+          'regular' => $regular,
           //'alone' => $alone,
         ]);
+    }
+
+    /**
+     * Return posts by tag.
+     *
+     * @param string $tag
+     *
+     * @return mixed
+     */
+    public function getPostsByTag($tag)
+    {
+        return response()->json(Keywords::getPostByTag($tag));
     }
 }

@@ -14,7 +14,7 @@ class Model
    *
    * @return string
    */
-  private static function getTableName()
+  public static function getTableName()
   {
     $name = (new \ReflectionClass(get_called_class()))->getShortName();
     $word = preg_split('/(?<=[a-z])(?=[A-Z])/', $name);

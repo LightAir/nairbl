@@ -24,6 +24,7 @@ App::group(['prefix' => 'api/v1', 'namespace' => 'App\Http\Controllers'], functi
 
     // for page 'tags'
     App::get('/tags', 'Api@getTags');
+    App::get('/tag/{slug:[a-zA-Z_\-0-9]+}', 'Api@getPostsByTag');
 
 });
 

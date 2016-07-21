@@ -6,7 +6,7 @@
 
 <template>
 
-<div class="row">
+<div class="row animated fadeIn">
     <div class="col-xs-12">
         <h1><span class="n-title">{{ news.title }}</span></h1>
     </div>
@@ -59,6 +59,7 @@ export default {
         }, (response) => {
             // error callback
         });
+
     },
     components: {
         VueMarkdown

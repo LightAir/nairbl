@@ -7,7 +7,7 @@
 <template>
 
 <div v-for="list in lists">
-    <div class="news-block">
+    <div class="news-block animated fadeIn">
         <a v-link="{ name: 'news', params: { slug: list.slug }}" class="news-title">{{ list.title }}</a>
         <div class="row">
             <div class="col-xs-12">
@@ -15,7 +15,7 @@
             </div>
         </div>
         <p class="news-text">
-          <vue-markdown :source="list.text"></vue-markdown>
+            <vue-markdown :source="list.text"></vue-markdown>
 
         </p>
         <div class="row news-footer">
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+
 import VueMarkdown from 'vue-markdown'
 
 export default {
@@ -45,31 +46,31 @@ export default {
         }
     },
     ready: function() {
-            this.$http.get('/api/v1/news/0').then((response) => {
-                // this.$http.get('/api/v1/news/0', param, {
-                //     headers: {
-                //         'Cache-Control': 'no-cache'
-                //     }
-                // }).then((response) => {
-                // TODO add error handler
-                response.status;
-                // set data on vm
-                this.$set('lists', response.json())
+        this.$http.get('/api/v1/news/0').then((response) => {
+            // this.$http.get('/api/v1/news/0', param, {
+            //     headers: {
+            //         'Cache-Control': 'no-cache'
+            //     }
+            // }).then((response) => {
+            // TODO add error handler
+            response.status;
+            // set data on vm
+            this.$set('lists', response.json())
 
-            }, (response) => {
-                // error callback
-            });
-        },
-        components: {
-            VueMarkdown
-        }
-        // ,
-        // components: {
-        //     list: {
-        //         template: '#test-templ',
-        //         props: ['list']
-        //     }
-        // }
+        }, (response) => {
+            // error callback
+        });
+    },
+    components: {
+        VueMarkdown
+    }
+    // ,
+    // components: {
+    //     list: {
+    //         template: '#test-templ',
+    //         props: ['list']
+    //     }
+    // }
 }
 
 </script>

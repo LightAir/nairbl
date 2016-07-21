@@ -225,29 +225,39 @@ $fav-padding: 3px;
  * code
  */
 
- pre {
-     color: #333;
-     background-color: $white;
-     border: 1px solid $bg;
-     border-radius: 0px;
- }
+pre {
+    color: #333;
+    background-color: $white;
+    border: 1px solid $bg;
+    border-radius: 0;
+}
 
- pre[class*="language-"] {
+pre[class*="language-"] {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
     border-left: 10px solid $dark-blue;
     // background-color: $white;
 }
-
-pre[class*="language-"]:before, pre[class*="language-"]:after {
+pre[class*="language-"]:after,
+pre[class*="language-"]:before {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+pre[class*="language-"]:after {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
-pre[class*="language-"]:after {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
+.about-tag {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: $red;
+    span {
+        font-weight: bold;
+        font-size: 25px;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
 }

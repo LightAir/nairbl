@@ -23,7 +23,7 @@ Vue.use(VueRes);
 var router = new VueRouter({
     hashbang: false,
     history: true,
-    linkActiveClass: "active",
+    linkActiveClass: 'active',
     mode: 'html5'
 });
 

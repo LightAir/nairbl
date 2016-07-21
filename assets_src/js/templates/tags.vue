@@ -6,18 +6,18 @@
 
 <template lang="html">
 
-<span class="favorite-title">All tags</span>
-
-
-<div class="favorite-tags">
-    <span v-for="fav in favorite">
+<div class="animated fadeIn">
+    <span class="favorite-title">All tags</span>
+    <div class="favorite-tags">
+        <span v-for="fav in favorite">
         <a v-link="{ name: 'tag', params: { slug: fav.route }}" class="fav">{{ fav.keyword }}</a>
     </span>
-</div>
-<div class="regular-tags">
-    <span v-for="reg in regular">
+    </div>
+    <div class="regular-tags">
+        <span v-for="reg in regular">
         <a v-link="{ name: 'tag', params: { slug: reg.route }}" class="reg">{{ reg.keyword }}</a>
     </span>
+    </div>
 </div>
 
 </template>

@@ -97,7 +97,7 @@
 	var router = new _vueRouter2.default({
 	    hashbang: false,
 	    history: true,
-	    linkActiveClass: "active",
+	    linkActiveClass: 'active',
 	    mode: 'html5'
 	});
 
@@ -20827,7 +20827,7 @@
 	// <template>
 	//
 	// <div v-for="list in lists">
-	//     <div class="news-block">
+	//     <div class="news-block animated fadeIn">
 	//         <a v-link="{ name: 'news', params: { slug: list.slug }}" class="news-title">{{ list.title }}</a>
 	//         <div class="row">
 	//             <div class="col-xs-12">
@@ -20835,7 +20835,7 @@
 	//             </div>
 	//         </div>
 	//         <p class="news-text">
-	//           <vue-markdown :source="list.text"></vue-markdown>
+	//             <vue-markdown :source="list.text"></vue-markdown>
 	//
 	//         </p>
 	//         <div class="row news-footer">
@@ -37267,7 +37267,7 @@
 /* 163 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n<div v-for=\"list in lists\">\n    <div class=\"news-block\">\n        <a v-link=\"{ name: 'news', params: { slug: list.slug }}\" class=\"news-title\">{{ list.title }}</a>\n        <div class=\"row\">\n            <div class=\"col-xs-12\">\n                <span class=\"news-date\">{{ list.date }}</span>\n            </div>\n        </div>\n        <p class=\"news-text\">\n          <vue-markdown :source=\"list.text\"></vue-markdown>\n\n        </p>\n        <div class=\"row news-footer\">\n            <div class=\"col-xs-12 news-tags\">\n                <!-- TODO add tags to news -->\n                <!-- {{ list.tags }} -->\n                test, one\n            </div>\n        </div>\n        <div class=\"row news-comments-counter\">\n            <div class=\"col-xs-12\">\n                no comments\n            </div>\n        </div>\n    </div>\n</div>\n\n";
+	module.exports = "\n\n\n\n\n\n\n\n<div v-for=\"list in lists\">\n    <div class=\"news-block animated fadeIn\">\n        <a v-link=\"{ name: 'news', params: { slug: list.slug }}\" class=\"news-title\">{{ list.title }}</a>\n        <div class=\"row\">\n            <div class=\"col-xs-12\">\n                <span class=\"news-date\">{{ list.date }}</span>\n            </div>\n        </div>\n        <p class=\"news-text\">\n            <vue-markdown :source=\"list.text\"></vue-markdown>\n\n        </p>\n        <div class=\"row news-footer\">\n            <div class=\"col-xs-12 news-tags\">\n                <!-- TODO add tags to news -->\n                <!-- {{ list.tags }} -->\n                test, one\n            </div>\n        </div>\n        <div class=\"row news-comments-counter\">\n            <div class=\"col-xs-12\">\n                no comments\n            </div>\n        </div>\n    </div>\n</div>\n\n";
 
 /***/ },
 /* 164 */
@@ -37425,7 +37425,7 @@
 	//
 	// <template>
 	//
-	// <div class="row">
+	// <div class="row animated fadeIn">
 	//     <div class="col-xs-12">
 	//         <h1><span class="n-title">{{ news.title }}</span></h1>
 	//     </div>
@@ -40503,7 +40503,7 @@
 /* 188 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n<div class=\"row\">\n    <div class=\"col-xs-12\">\n        <h1><span class=\"n-title\">{{ news.title }}</span></h1>\n    </div>\n    <div class=\"col-xs-12 post-date\">\n        <span>{{ news.created_at }}</span>\n    </div>\n    <div class=\"col-xs-12\">\n        <vue-markdown :id=\"id\" :source=\"model\"></vue-markdown>\n        <!-- <span class=\"n-text\">{{ news.text }}</span> -->\n    </div>\n</div>\n\n";
+	module.exports = "\n\n\n\n\n\n\n\n<div class=\"row animated fadeIn\">\n    <div class=\"col-xs-12\">\n        <h1><span class=\"n-title\">{{ news.title }}</span></h1>\n    </div>\n    <div class=\"col-xs-12 post-date\">\n        <span>{{ news.created_at }}</span>\n    </div>\n    <div class=\"col-xs-12\">\n        <vue-markdown :id=\"id\" :source=\"model\"></vue-markdown>\n        <!-- <span class=\"n-text\">{{ news.text }}</span> -->\n    </div>\n</div>\n\n";
 
 /***/ },
 /* 189 */
@@ -40581,18 +40581,18 @@
 	//
 	// <template lang="html">
 	//
-	// <span class="favorite-title">All tags</span>
-	//
-	//
-	// <div class="favorite-tags">
-	//     <span v-for="fav in favorite">
+	// <div class="animated fadeIn">
+	//     <span class="favorite-title">All tags</span>
+	//     <div class="favorite-tags">
+	//         <span v-for="fav in favorite">
 	//         <a v-link="{ name: 'tag', params: { slug: fav.route }}" class="fav">{{ fav.keyword }}</a>
 	//     </span>
-	// </div>
-	// <div class="regular-tags">
-	//     <span v-for="reg in regular">
+	//     </div>
+	//     <div class="regular-tags">
+	//         <span v-for="reg in regular">
 	//         <a v-link="{ name: 'tag', params: { slug: reg.route }}" class="reg">{{ reg.keyword }}</a>
 	//     </span>
+	//     </div>
 	// </div>
 	//
 	// </template>
@@ -40631,7 +40631,7 @@
 /* 193 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n<span class=\"favorite-title\">All tags</span>\n\n\n<div class=\"favorite-tags\">\n    <span v-for=\"fav in favorite\">\n        <a v-link=\"{ name: 'tag', params: { slug: fav.route }}\" class=\"fav\">{{ fav.keyword }}</a>\n    </span>\n</div>\n<div class=\"regular-tags\">\n    <span v-for=\"reg in regular\">\n        <a v-link=\"{ name: 'tag', params: { slug: reg.route }}\" class=\"reg\">{{ reg.keyword }}</a>\n    </span>\n</div>\n\n";
+	module.exports = "\n\n\n\n\n\n\n\n<div class=\"animated fadeIn\">\n    <span class=\"favorite-title\">All tags</span>\n    <div class=\"favorite-tags\">\n        <span v-for=\"fav in favorite\">\n        <a v-link=\"{ name: 'tag', params: { slug: fav.route }}\" class=\"fav\">{{ fav.keyword }}</a>\n    </span>\n    </div>\n    <div class=\"regular-tags\">\n        <span v-for=\"reg in regular\">\n        <a v-link=\"{ name: 'tag', params: { slug: reg.route }}\" class=\"reg\">{{ reg.keyword }}</a>\n    </span>\n    </div>\n</div>\n\n";
 
 /***/ },
 /* 194 */
@@ -40694,13 +40694,59 @@
 
 /***/ },
 /* 197 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _vueMarkdown = __webpack_require__(15);
+
+	var _vueMarkdown2 = _interopRequireDefault(_vueMarkdown);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	    data: function data() {
+	        return {
+	            lists: [],
+	            tagName: this.$route.params.slug,
+	            status: true
+	        };
+	    },
+	    computed: {},
+	    ready: function ready() {
+	        var _this = this;
+
+	        this.$http.get('/api/v1/tag/' + this.$route.params.slug).then(function (response) {
+	            // TODO add error handler
+	            response.status;
+	            // set data on vm
+
+	            _this.$set('lists', response.json());
+
+	            if (!response.json().length) {
+	                _this.status = false;
+	            }
+	        }, function (response) {
+	            // error callback
+	        });
+	    },
+	    route: {
+	        canReuse: function functionName() {
+	            return false;
+	        }
+	    },
+	    attached: function attached() {},
+	    methods: {},
+	    components: {
+	        VueMarkdown: _vueMarkdown2.default
+	    }
+	};
+
+	// </script>
 	// <style lang="css">
 	//
 	//
@@ -40709,30 +40755,50 @@
 	//
 	// <template lang="html">
 	//
-	//   News by tags
+	// <div class="animated fadeIn">
+	//     <div class="about-tag">
+	//         News by tag <span>{{ tagName }}</span>
+	//     </div>
+	//     <div class="posts-not-found" v-show="!status">
+	//         News not found
+	//     </div>
+	//     <div v-for="list in lists" v-show="status">
+	//         <div class="news-block animated fadeIn">
+	//             <a v-link="{ name: 'news', params: { slug: list.slug }}" class="news-title">{{ list.title }}</a>
+	//             <div class="row">
+	//                 <div class="col-xs-12">
+	//                     <span class="news-date">{{ list.date }}</span>
+	//                 </div>
+	//             </div>
+	//             <p class="news-text">
+	//                 <vue-markdown :source="list.text"></vue-markdown>
+	//
+	//             </p>
+	//             <div class="row news-footer">
+	//                 <div class="col-xs-12 news-tags">
+	//                     <!-- TODO add tags to news -->
+	//                     <!-- {{ list.tags }} -->
+	//                     test, one
+	//                 </div>
+	//             </div>
+	//             <div class="row news-comments-counter">
+	//                 <div class="col-xs-12">
+	//                     no comments
+	//                 </div>
+	//             </div>
+	//         </div>
+	//     </div>
+	// </div>
 	//
 	// </template>
 	//
 	// <script>
 
-	exports.default = {
-	    data: function data() {
-	        return {};
-	    },
-	    computed: {},
-	    ready: function ready() {},
-	    attached: function attached() {},
-	    methods: {},
-	    components: {}
-	};
-
-	// </script>
-
 /***/ },
 /* 198 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\nNews by tags\n\n";
+	module.exports = "\n\n\n\n\n\n\n\n<div class=\"animated fadeIn\">\n    <div class=\"about-tag\">\n        News by tag <span>{{ tagName }}</span>\n    </div>\n    <div class=\"posts-not-found\" v-show=\"!status\">\n        News not found\n    </div>\n    <div v-for=\"list in lists\" v-show=\"status\">\n        <div class=\"news-block animated fadeIn\">\n            <a v-link=\"{ name: 'news', params: { slug: list.slug }}\" class=\"news-title\">{{ list.title }}</a>\n            <div class=\"row\">\n                <div class=\"col-xs-12\">\n                    <span class=\"news-date\">{{ list.date }}</span>\n                </div>\n            </div>\n            <p class=\"news-text\">\n                <vue-markdown :source=\"list.text\"></vue-markdown>\n\n            </p>\n            <div class=\"row news-footer\">\n                <div class=\"col-xs-12 news-tags\">\n                    <!-- TODO add tags to news -->\n                    <!-- {{ list.tags }} -->\n                    test, one\n                </div>\n            </div>\n            <div class=\"row news-comments-counter\">\n                <div class=\"col-xs-12\">\n                    no comments\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n";
 
 /***/ }
 /******/ ]);

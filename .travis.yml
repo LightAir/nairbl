@@ -5,7 +5,7 @@ node_js:
   - "5.5.0"
   - "node"
 before_script:
-  - npm install -g gulp
+  - npm install -g gulp bower
   - npm update
 script: gulp
 install:

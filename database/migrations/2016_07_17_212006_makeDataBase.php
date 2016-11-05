@@ -14,7 +14,6 @@ class MakeDataBase extends Migration
    {
        Schema::create('keywords', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('parent_keyword_id')->default(0);
            $table->string('keyword', 255);
            $table->string('route', 255);
            $table->boolean('is_favourite')->default(0);
@@ -22,13 +21,13 @@ class MakeDataBase extends Migration
 
        Schema::create('posts', function (Blueprint $table) {
            $table->increments('id');
-           $table->string('title', 535)->default('');
-           $table->string('slug', 535)->default('');
+           $table->string('title', 535);
+           $table->string('slug', 255);
            $table->longText('text')->default('');
-           $table->boolean('is_published')->default(0);
-           $table->boolean('is_commentable')->default(0);
+           $table->boolean('is_published');
+           $table->boolean('is_commentable');
            $table->boolean('is_visible')->default(1);
-           $table->boolean('is_favourite')->default(0);
+           $table->boolean('is_favourite');
            $table->nullableTimestamps();
        });
 
@@ -41,10 +40,10 @@ class MakeDataBase extends Migration
            $table->index(array('is_visible', 'created_at'));
        });
 
-       Schema::create('posts_keywords', function (Blueprint $table) {
+       Schema::create('keywords_posts', function (Blueprint $table) {
            $table->increments('id');
-           $table->integer('post_id');
-           $table->integer('keyword_id');
+           $table->integer('posts_id');
+           $table->integer('keywords_id');
        });
 
        Schema::create('settings', function (Blueprint $table) {
@@ -62,10 +61,9 @@ class MakeDataBase extends Migration
     */
    public function down()
    {
-
        Schema::dropIfExists('keywords');
        Schema::dropIfExists('posts');
-       Schema::dropIfExists('posts_keywords');
+       Schema::dropIfExists('keywords_posts');
        Schema::dropIfExists('settings');
    }
 }

@@ -2,60 +2,60 @@
 
 namespace App\Http\Controllers;
 
-use Laravel\Lumen\Routing\Controller as BaseController;
 use App\Models\Settings;
+use Laravel\Lumen\Routing\Controller as BaseController;
+use League\Fractal\{
+    Manager, Resource\Collection
+};
 
 class Controller extends BaseController
 {
+
     /**
-     * Get setting by group.
-     *
-     * @param string $grp
-     *
-     * @return mixed
+     * @var Manager
      */
-    public function getSettingsByGroup($grp = 'general')
+    protected $fractal;
+
+    /**
+     * Controller constructor.
+     */
+    public function __construct()
     {
-        return Settings::find(['group' => $grp]);
+        $this->fractal = new Manager();
     }
 
     /**
-     * Get setting by group and key.
+     * @param $resource
      *
-     * @param string $grp
-     * @param string $key
-     *
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getSettingsByKey($key = '', $grp = 'general')
+    protected function render($resource)
     {
-        $data = Settings::findFirst(['group' => $grp, 'setting_key' => $key]);
+        return response()->json($this->fractal->createData($resource)->toJson());
+    }
 
-        // TODO add Redis cache
-        if (isset($data->setting)) {
-            return $data->setting;
+    /**
+     * Check fields
+     *
+     * @param $fields
+     * @param $req
+     *
+     * @return array
+     */
+    public function fieldsCheck($fields, $req)
+    {
+        $data = [];
+
+        foreach ($req as $key => $value) {
+
+            if (array_key_exists($key, $fields)) {
+                if ($fields[$key] && checkState($value)) {
+                    $data[$key] = checkState($value);
+                }
+                $data[$key] = $value;
+            }
         }
 
-        return false;
-    }
-
-    /**
-     * Save settings.
-     *
-     * @param string $grp
-     * @param string $key
-     * @param string $val
-     *
-     * @return bool
-     */
-    public function setSetting($key = '', $val = '', $grp = 'general')
-    {
-        $data = [
-          'group' => $grp,
-          'setting_key' => $key,
-          'setting' => $val,
-        ];
-
-        return Settings::insert($data);
+        return $data;
     }
 }

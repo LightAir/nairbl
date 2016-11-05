@@ -1,34 +1,53 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
-*/
-
 /**
  * API
  *
  * @static
  */
-App::group(['prefix' => 'api/v1', 'namespace' => 'App\Http\Controllers'], function ()
-{
-    App::get('/about', 'Api@about');
-    App::get('/news/{offset:[0-9]+}', 'Api@news');
-    App::get('/item/{slug:[a-zA-Z_\-0-9]+}', 'Api@getNewsBySlug');
+$api = app(Dingo\Api\Routing\Router::class);
 
-    // for page 'tags'
-    App::get('/tags', 'Api@getTags');
-    App::get('/tag/{slug:[a-zA-Z_\-0-9]+}', 'Api@getPostsByTag');
+$currentApiVersion = 'v1';
+/**
+ *
+ */
+$api->version($currentApiVersion, function ($api) {
 
+    $api->get('info', 'App\Http\Controllers\Info@info');
+    $api->get('tags', 'App\Http\Controllers\Tags@getTags');
+    $api->get('tag/{name}', 'App\Http\Controllers\Tags@getPostsByTag');
+
+    $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
+        $api->group(['prefix' => 'auth'], function ($api) {
+            // /api/auth/login
+            $api->post('login', 'Auth@login');
+        });
+    });
+
+    $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
+        $api->get('post', 'Post@post');
+        $api->get('post/{slug}', 'Post@getPostBySlug');
+    });
 });
 
-/**
- * all
- */
-App::get('/{path:[\/\w\.-]*}', 'Blog@index');
+$api->version($currentApiVersion, ['middleware' => 'jwt.auth'], function ($api) {
+    $api->put('info', 'App\Http\Controllers\Info@updateInfo');
+    $api->delete('tag/{name}', 'App\Http\Controllers\Tags@deleteTag');
+
+    $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
+        $api->group(['prefix' => 'auth'], function ($api) {
+            $api->post('logout', 'Auth@logout');
+        });
+    });
+
+    $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
+        $api->post('post', 'Post@addPost');
+        $api->put('post/{slug}', 'Post@updatePost');
+        $api->delete('post/{slug}', 'Post@deletePost');
+    });
+});
+
+
+App::get('/', function () {
+    return 'ok';
+});

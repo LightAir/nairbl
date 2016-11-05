@@ -4,7 +4,9 @@
     </IfModule>
 
     RewriteEngine On
-
+    # for bearer
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
     #RewriteRule ^(assets)
 
     # Redirect Trailing Slashes If Not A Folder...

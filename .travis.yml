@@ -14,3 +14,6 @@ install:
   - composer install
   
 script: phpunit --configuration phpunit.xml --coverage-text
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

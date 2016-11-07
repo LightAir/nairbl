@@ -1,4 +1,5 @@
 [![codecov](https://codecov.io/gh/LightAir/nairbl-server/branch/master/graph/badge.svg)](https://codecov.io/gh/LightAir/nairbl-server)
+[![Build Status](https://travis-ci.org/LightAir/nairbl-server.svg?branch=master)](https://travis-ci.org/LightAir/nairbl-server)
 
 # NAirBL
 ![](https://raw.githubusercontent.com/LightAir/nairbl/25c9b1056fadb6aaccbcf6d4d6ed651f7355c540/assets_src/images/logo_mini.png "logo")

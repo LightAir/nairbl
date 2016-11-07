@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=5.6.11",
         "laravel/lumen-framework": "5.3.*",
         "vlucas/phpdotenv": "~2.2",
         "josegonzalez/dotenv": "^2.0",
@@ -17,11 +17,12 @@
         "laravelista/lumen-vendor-publish": "^2.0",
         "dingo/api": "1.0.x@dev",
         "league/fractal": "^0.14.0",
-        "michaelb/lumen-make": "^1.0"
+        "michaelb/lumen-make": "^1.0",
+        "phpunit/phpunit": "^5.6",
+        "phpunit/phpunit-mock-objects": "^3.4"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "phpunit/phpunit": "~4.0"
+        "mockery/mockery": "^0.9.5"
     },
     "autoload": {
         "psr-4": {

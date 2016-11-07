@@ -30,8 +30,9 @@ $app->withEloquent();
 /**
  * aliases
  */
-class_alias('Illuminate\Support\Facades\App', 'App');
-
+if (!class_exists('App')) {
+    class_alias('Illuminate\Support\Facades\App', 'App');
+}
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings

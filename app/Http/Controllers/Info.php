@@ -19,7 +19,15 @@ class Info extends Controller
      */
     public function info()
     {
-        return Settings::where('group', 'info')->get();
+        $settings = Settings::where('group', 'info')->get()->toArray();
+
+        $data = [];
+
+        foreach ($settings as $item){
+            $data[$item['setting_key']] = $item['setting'];
+        }
+
+        return $data;
     }
 
     /**

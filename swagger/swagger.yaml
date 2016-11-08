@@ -1,0 +1,354 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.1"
+  title: Nairbl API
+host: "nairbl.local"
+basePath: "/api"
+schemes: 
+  - http
+  - https
+produces: [ 
+  "application/json" 
+  ]
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      consumes: [
+        "application/x-www-form-urlencoded"
+      ]
+      description:
+        Получить ```Bearer``` токен авторизации
+      parameters:
+        - name: email
+          in: formData
+          description: Email
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: Пароль
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+  /auth/logout:
+    post:
+      tags:
+        - Auth
+      consumes: [
+        "application/x-www-form-urlencoded"
+      ]
+      description:
+        Разлогиниться
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer токен
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+        401:
+          description: The token has been blacklisted
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+  /post:
+    get:
+      tags:
+        - Post
+      description:
+        Получить статьи из блога
+      parameters:
+        - name: page
+          in: query
+          description: Page
+          required: false
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error
+    post:
+      tags:
+        - Post
+      description:
+        Создать статью
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer токен
+          required: true
+          type: string
+        - name: title
+          in: formData
+          description: Название статьи
+          required: true
+          type: string
+        - name: text
+          in: formData
+          description: Текст статьи
+          required: true
+          type: string
+        - name: tags
+          in: formData
+          description: Теги статьи
+          required: true
+          type: string
+        - name: isPublished
+          in: formData
+          description: on - если статью следует опубликовать иначе off 
+          required: false
+          type: string
+        - name: isCommentable
+          in: formData
+          description: off если следует запретить комментирование статьи наче on
+          required: false
+          type: string
+        #- name: isVisible
+        #  in: formData
+        #  description: Скрыть статью полностью (в т.ч. из черновика)
+        #  required: false
+        #  type: string
+        - name: isFavourite
+          in: formData
+          description: on - отметить статью как избранная иначе off
+          required: false
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+  /post/{slug}:
+    get:
+      tags:
+        - Post
+      description:
+        Получить по имени роута статью
+      parameters:
+        - name: slug
+          in: path
+          description: Имя роута статьи (slug)
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+    put:
+      tags:
+        - Post
+      description:
+        Изменить по имени роута статью
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer токен
+          required: true
+          type: string
+        - name: title
+          in: formData
+          description: Название статьи
+          required: true
+          type: string
+        - name: text
+          in: formData
+          description: Текст статьи
+          required: true
+          type: string
+        - name: slug
+          in: path
+          description: Имя роута статьи (slug)
+          required: true
+          type: string
+        - name: tags
+          in: formData
+          description: Теги статьи
+          required: true
+          type: string
+        - name: newSlug
+          in: formData
+          description: Новый роут статьи
+          required: false
+          type: string
+        - name: isPublished
+          in: formData
+          description: on - если статью следует опубликовать иначе off 
+          required: false
+          type: string
+        - name: isCommentable
+          in: formData
+          description: off если следует запретить комментирование статьи наче on
+          required: false
+          type: string
+        #- name: isVisible
+        #  in: formData
+        #  description: Скрыть статью полностью (в т.ч. из черновика)
+        #  required: false
+        #  type: string
+        - name: isFavourite
+          in: formData
+          description: on - отметить статью как избранная иначе off
+          required: false
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+    delete:
+      tags:
+        - Post
+      description:
+        Удалить по имени роута статью
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer токен
+          required: true
+          type: string
+        - name: slug
+          in: path
+          description: Имя роута статьи (slug)
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+  /info:
+    put:
+      tags:
+        - Info
+      description:
+        Обновить информацию о блоге
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer токен
+          required: true
+          type: string
+        - name: title
+          in: formData
+          description: Название Блога
+          required: false
+          type: string
+        - name: slogan
+          in: formData
+          description: Подпись (лозунг)
+          required: false
+          type: string
+        - name: author
+          in: formData
+          description: Автор блога
+          required: false
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+    get:
+      tags:
+        - Info
+      description:
+        Получить информацию о блоге
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error
+  /tags:
+    get:
+      tags:
+        - Tags
+      description:
+        Получает список тегов
+      parameters:
+        - name: include
+          in: query
+          description: Дополнительные поля
+          required: false
+          type: string
+        - name: short
+          in: query
+          description: Сокращённый вывод
+          required: false
+          type: boolean
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error
+  /tag/{name}:
+    get:
+      tags:
+        - Tags
+      description:
+        Получить посты по имени тега
+      parameters:
+        - name: name
+          in: path
+          description: Имя тега
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error
+    delete:
+      tags:
+        - Tags
+      description:
+        Удалить тег (Только если тег свободен)
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer токен
+          required: true
+          type: string
+        - name: name
+          in: path
+          description: Имя тега
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Error
+        500:
+          description: Server error or validation error

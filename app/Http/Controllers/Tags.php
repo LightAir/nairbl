@@ -42,11 +42,10 @@ class Tags extends Controller
      * Return posts by tag.
      *
      * @param $name
-     * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getPostsByTag($name, Request $request)
+    public function getPostsByTag($name)
     {
         $tag = Keywords::where('keyword', $name)->first();
 

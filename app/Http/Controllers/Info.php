@@ -23,7 +23,7 @@ class Info extends Controller
 
         $data = [];
 
-        foreach ($settings as $item){
+        foreach ($settings as $item) {
             $data[$item['setting_key']] = $item['setting'];
         }
 
@@ -41,25 +41,22 @@ class Info extends Controller
         $fields = [
             'title' => false,
             'slogan' => false,
-            'author' => false,
+            'author' => false
         ];
 
         $data = $this->fieldsCheck($fields, $request->toArray());
 
-        \DB::beginTransaction();
-
-        foreach ($data as $key => $value) {
-
-            try {
-                Settings::where('group', 'info')->where('setting_key', $key)->update([
-                    'setting' => $value
-                ]);
-            } catch (\Exception $exc) {
-                return success(false, $exc->getMessage());
-            }
+        try {
+            \DB::transaction(function () use ($data) {
+                foreach ($data as $key => $value) {
+                    Settings::where('group', 'info')->where('setting_key', $key)->update([
+                        'setting' => $value
+                    ]);
+                }
+            });
+        } catch (\Exception $exc) {
+            return success(false, $exc->getMessage());
         }
-
-        \DB::commit();
 
         // todo problem
         return success();

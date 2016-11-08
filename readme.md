@@ -4,6 +4,29 @@
 # NAirBL
 ![](https://raw.githubusercontent.com/LightAir/nairbl/25c9b1056fadb6aaccbcf6d4d6ed651f7355c540/assets_src/images/logo_mini.png "logo")
 
+
+# install
+
+vagrant up
+
+mysqladmin create nairbl
+
+sudo nano /etc/nginx/nginx.conf
+
+in file set path to folder /var/www/default/public
+
+cp .env.example .env
+
+php artisan jwt:secret
+
+set APP_KEY in .env file
+
+sudo service nginx restart
+
+php artisan migrate
+
+php vendor/bin/phpunit
+
 #### What are you building?
 Blog
 

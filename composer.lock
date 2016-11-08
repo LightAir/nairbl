@@ -4,13 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "01fe670bc9c44ee3de64fca5774ce1d5",
-    "content-hash": "990033b95097d8c3b6dd8b6d6c6159cc",
-=======
-    "hash": "e4e8d9d78a3dbfaa6eb0a2d2f5f40046",
-    "content-hash": "98d8c1391152fec657a3f15dba189ad4",
->>>>>>> 83069c269e9f05337f394d8d35580226842ebe1a
+    "hash": "8ce694d9a419d108e444867713f1578d",
+    "content-hash": "3cf29d26b02328459398e4c206ff1634",
     "packages": [
         {
             "name": "badcow/lorem-ipsum",
@@ -1695,16 +1690,16 @@
         },
         {
             "name": "laravel/lumen-framework",
-            "version": "v5.3.1",
+            "version": "v5.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/lumen-framework.git",
-                "reference": "c8ebc69875a2c219140b50fbb6a16c9d55d526b2"
+                "reference": "a2aee352b2dfa3d6321736c3ecfc86171f883379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/c8ebc69875a2c219140b50fbb6a16c9d55d526b2",
-                "reference": "c8ebc69875a2c219140b50fbb6a16c9d55d526b2",
+                "url": "https://api.github.com/repos/laravel/lumen-framework/zipball/a2aee352b2dfa3d6321736c3ecfc86171f883379",
+                "reference": "a2aee352b2dfa3d6321736c3ecfc86171f883379",
                 "shasum": ""
             },
             "require": {
@@ -1774,7 +1769,7 @@
                 "laravel",
                 "lumen"
             ],
-            "time": "2016-10-05 22:29:03"
+            "time": "2016-11-07 18:14:23"
         },
         {
             "name": "laravelista/lumen-vendor-publish",
@@ -2381,16 +2376,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -2425,7 +2420,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3329,76 +3324,8 @@
             "time": "2016-08-18 05:49:44"
         },
         {
-<<<<<<< HEAD
-            "name": "symfony/var-dumper",
-            "version": "v3.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "4dc2f03b480c43f1665d3317d827a04ed6ffd11e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/4dc2f03b480c43f1665d3317d827a04ed6ffd11e",
-                "reference": "4dc2f03b480c43f1665d3317d827a04ed6ffd11e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "require-dev": {
-                "twig/twig": "~1.20|~2.0"
-            },
-            "suggest": {
-                "ext-symfony_debug": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Resources/functions/dump.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Component\\VarDumper\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony mechanism for exploring and dumping PHP variables",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "debug",
-                "dump"
-            ],
-            "time": "2016-10-18 15:46:07"
-        },
-        {
-            "name": "tymon/jwt-auth",
-            "version": "1.0.0-alpha.3",
-=======
             "name": "sebastian/exporter",
             "version": "1.2.2",
->>>>>>> 83069c269e9f05337f394d8d35580226842ebe1a
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
@@ -4414,6 +4341,69 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "time": "2016-10-18 04:30:12"
+        },
+        {
+            "name": "symfony/var-dumper",
+            "version": "v3.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "4dc2f03b480c43f1665d3317d827a04ed6ffd11e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/4dc2f03b480c43f1665d3317d827a04ed6ffd11e",
+                "reference": "4dc2f03b480c43f1665d3317d827a04ed6ffd11e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "require-dev": {
+                "twig/twig": "~1.20|~2.0"
+            },
+            "suggest": {
+                "ext-symfony_debug": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "time": "2016-10-18 15:46:07"
         },
         {
             "name": "symfony/yaml",

@@ -1,5 +1,6 @@
 [![codecov](https://codecov.io/gh/LightAir/nairbl-server/branch/master/graph/badge.svg)](https://codecov.io/gh/LightAir/nairbl-server)
 [![Build Status](https://travis-ci.org/LightAir/nairbl-server.svg?branch=master)](https://travis-ci.org/LightAir/nairbl-server)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/09454f45c2bb42d5b95464fcc0332e0c)](https://www.codacy.com/app/the/nairbl-server?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LightAir/nairbl-server&amp;utm_campaign=Badge_Grade)
 
 # NAirBL
 ![](https://raw.githubusercontent.com/LightAir/nairbl/25c9b1056fadb6aaccbcf6d4d6ed651f7355c540/assets_src/images/logo_mini.png "logo")

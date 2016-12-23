@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Keywords extends Model
 {
+
+    public $timestamps = false;
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

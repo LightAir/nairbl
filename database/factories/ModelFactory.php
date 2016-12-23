@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Keywords;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,9 +12,11 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(Keywords::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'id' => $faker->randomNumber(),
+        'keyword' => $faker->words(5),
+        'route' => $faker->words(5),
+        'is_favourite' => 1
     ];
 });

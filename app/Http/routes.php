@@ -8,9 +8,7 @@
 $api = app(Dingo\Api\Routing\Router::class);
 
 $currentApiVersion = 'v1';
-/**
- *
- */
+
 $api->version($currentApiVersion, function ($api) {
 
     $api->get('info', 'App\Http\Controllers\Info@info');
@@ -30,6 +28,9 @@ $api->version($currentApiVersion, function ($api) {
     });
 });
 
+/**
+ * only authorized
+ */
 $api->version($currentApiVersion, ['middleware' => 'jwt.auth'], function ($api) {
     $api->put('info', 'App\Http\Controllers\Info@updateInfo');
     $api->delete('tag/{name}', 'App\Http\Controllers\Tags@deleteTag');

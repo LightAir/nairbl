@@ -18,7 +18,9 @@ class Tags extends Controller
     /**
      * Return tags.
      *
-     * @return mixed
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getTags(Request $request)
     {
@@ -47,7 +49,7 @@ class Tags extends Controller
      */
     public function getPostsByTag($name)
     {
-        $tag = Keywords::where('keyword', $name)->first();
+        $tag = Keywords::where('route', $name)->first();
 
         if (!$tag) {
             return success(false, 'tags not found');

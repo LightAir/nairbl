@@ -148,4 +148,6 @@ class ApiPostsTest extends TestCase
             ]
         );
     }
+
+    //todo add test for update posts
 }

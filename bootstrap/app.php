@@ -111,6 +111,10 @@ $app->singleton(Illuminate\Auth\AuthManager::class, function ($app) {
 
 $app->alias(Tymon\JWTAuth\Facades\JWTFactory::class, 'JWTFactory');
 
+if ($app->environment() !== 'production') {
+    $app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+}
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

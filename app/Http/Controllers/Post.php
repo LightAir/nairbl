@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Keywords;
 use App\Models\Posts;
 use App\Transformers\PostTransformer;
 
@@ -77,6 +78,14 @@ class Post extends Controller
         }
 
         //todo add tags
+        $tagsArray = explode(',', $request->input('tags'));
+
+//        foreach ($tagsArray as $tag){
+//            $tagInDb = Keywords::find('');
+//        }
+
+
+        dd($tagsArray);
 
         $slug = $request->input('slug')??slugGenerate($request->input('title'));
 

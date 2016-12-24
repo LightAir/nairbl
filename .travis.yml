@@ -3,14 +3,13 @@ language: php
 php:
   - 7.0
 
-env:
-  - DB_CONNECTION=sqlite DB_DATABASE=database/nairbl.sqlite
-
 install:
   - composer install --no-interaction
 
 script:
-  - vendor/bin/phpunit --configuration phpunit.xml --coverage-clover=coverage.xml
+  - touch .env
+  - php -S localhost:8000 -t public/ &
+  - vendor/bin/phpunit -v -c phpunit.xml --coverage-clover=coverage.xml
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

@@ -7,7 +7,7 @@ install:
   - composer install --no-interaction
 
 script:
-  - touch .env
+  - cp .env.example .env
   - php -S localhost:8000 -t public/ &
   - vendor/bin/phpunit -v -c phpunit.xml --coverage-clover=coverage.xml
 

@@ -13,6 +13,8 @@ class KeywordsTransformerTest extends TestCase
 
     public function setUp()
     {
+        parent::setUp();
+
         $this->keywords = factory(Keywords::class, 1)->make();
     }
 
@@ -25,4 +27,10 @@ class KeywordsTransformerTest extends TestCase
         $this->assertArrayHasKey('is_favourite', $ktr);
     }
 
+    public function testIncludePosts()
+    {
+        $ktr = (new KeywordsTransformer())->includePosts($this->keywords)->getMeta();
+
+//        dd($ktr);
+    }
 }

@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
         // run in console before first run
         // ./artisan db:seed
 
-        $this->call('MkDataBase');
+        $this->call(MkDataBase::class);
+
+        $this->call(KeywordsSeeder::class);
+        $this->call(KeywordsPostsSeeder::class);
 
         User::create([
             'name' => 'admin',
@@ -24,15 +27,15 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin')
         ]);
 
-        $info =[
-          'title' => 'My blog',
+        $info = [
+            'title' => 'My blog',
             'author' => 'admin',
             'slogan' => 'slogan'
         ];
 
         \DB::beginTransaction();
 
-        foreach ($info as $key => $value){
+        foreach ($info as $key => $value) {
             Settings::create([
                 'group' => 'info',
                 'setting_key' => $key,

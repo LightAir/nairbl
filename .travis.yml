@@ -8,7 +8,7 @@ install:
 
 script:
   - cp .env.example .env
-  - php artisan jwt:secret
+  - php artisan jwt:secret -f
   - php -S localhost:8000 -t public/ &
   - vendor/bin/phpunit -v -c phpunit.xml --coverage-clover=coverage.xml
 

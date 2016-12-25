@@ -124,5 +124,8 @@ class ApiTagsTest extends TestCase
             ]);
     }
 
-    //todo add test delete tag
+    public function testDeleteTag()
+    {
+
+    }
 }

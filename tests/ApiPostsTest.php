@@ -3,10 +3,25 @@
 class ApiPostsTest extends TestCase
 {
 
+    /**
+     * Bearer token
+     *
+     * @var string
+     */
     private $token;
 
+    /**
+     * Headers for authorization
+     *
+     * @var array
+     */
     private $headers;
 
+    /**
+     * Setup the test environment.
+     *
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
@@ -25,6 +40,8 @@ class ApiPostsTest extends TestCase
 
     /**
      * Test create post '/post'
+     *
+     * @return void
      */
     public function testCreatePost()
     {
@@ -48,6 +65,8 @@ class ApiPostsTest extends TestCase
 
     /**
      * Test get post '/post'
+     *
+     * @return void
      */
     public function testGetPosts()
     {
@@ -95,6 +114,8 @@ class ApiPostsTest extends TestCase
 
     /**
      * Get post by slug '/post/{slug}'
+     *
+     * @return void
      */
     public function testGetPost()
     {
@@ -125,6 +146,11 @@ class ApiPostsTest extends TestCase
             ]);
     }
 
+    /**
+     * Test for delete posts
+     *
+     * @return void
+     */
     public function testDeletePost()
     {
 
@@ -151,6 +177,8 @@ class ApiPostsTest extends TestCase
 
     /**
      * Test for update posts
+     *
+     * @return void
      */
     public function testUpdatePost()
     {

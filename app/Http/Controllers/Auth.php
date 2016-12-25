@@ -51,11 +51,12 @@ class Auth extends Controller
                 'email' => 'required|email|max:255',
                 'password' => 'required|max:255',
             ]);
-        } catch (HttpResponseException $e) {
+        } catch (\Exception $exc) {
+            // future use success function
             return response()->json([
                 'error' => [
-                    'message' => 'Invalid auth',
-                    'status_code' => Response::HTTP_BAD_REQUEST
+                    'message' => $exc->getMessage(),
+                    'status_code' => Response::HTTP_BAD_REQUEST // todo replace
                 ]],
                 Response::HTTP_BAD_REQUEST,
                 $headers = []

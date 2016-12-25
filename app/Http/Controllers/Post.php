@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keywords;
+use App\Models\KeywordsPosts;
 use App\Models\Posts;
 use App\Transformers\PostTransformer;
 
@@ -59,6 +60,22 @@ class Post extends Controller
     }
 
     /**
+     * Get tags and transform them
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    private function getTags(Request $request)
+    {
+        return collect(array_map(function ($data) {
+            return slugGenerate(trim(strtolower($data)));
+        },
+            explode(',', $request->input('tags'))
+        ));
+    }
+
+    /**
      * Create post
      *
      * @param Request $request
@@ -67,6 +84,8 @@ class Post extends Controller
      */
     public function addPost(Request $request)
     {
+
+        // future need refactoring this
 
         try {
             $this->validate($request, [
@@ -77,19 +96,31 @@ class Post extends Controller
             return success(false, 'Invalid post create');
         }
 
-        //todo add tags
-        $tagsArray = explode(',', $request->input('tags'));
+        $tagCollect = $this->getTags($request);
 
-//        foreach ($tagsArray as $tag){
-//            $tagInDb = Keywords::find('');
-//        }
+        // find differences between exist keyword and new
+        $tagsDiff = $tagCollect->diff(Keywords::whereIn('route', $tagCollect)->get()->map(function ($item, $key) {
+            return $item->route;
+        }));
 
+        // build keywords array
+        $keywords = $tagsDiff->map(function ($item, $key) {
+            return [
+                'keyword' => ucfirst($item),
+                'route' => $item,
+                'is_favourite' => 0,
+            ];
+        });
 
-        dd($tagsArray);
+        \DB::beginTransaction();
+
+        // insert new keywords
+        Keywords::insert($keywords->toArray());
 
         $slug = $request->input('slug')??slugGenerate($request->input('title'));
 
-        Posts::create([
+        // insert post
+        $post = Posts::create([
             'title' => $request->input('title'),
             'slug' => $slug,
             'text' => $request->input('text'),
@@ -98,6 +129,25 @@ class Post extends Controller
             'is_visible' => checkState($request->input('isVisible'), getenv('IS_VISIBLE')),
             'is_favourite' => checkState($request->input('isFavourite'), 0)
         ]);
+
+        $postId = $post->id;
+
+
+        // search all inserting keywords
+        $kw = Keywords::whereIn('route', $tagCollect)->get();
+
+        // build array
+        $tagsId = $kw->map(function ($item, $key) use ($postId) {
+            return [
+                'posts_id' => $postId,
+                'keywords_id' => $item->id
+            ];
+        });
+
+        // insert relation keyword-post
+        KeywordsPosts::insert($tagsId->toArray());
+
+        \DB::commit();
 
         return response()->json([
             'success' => [
@@ -119,6 +169,8 @@ class Post extends Controller
     public function updatePost($slug, Request $request)
     {
 
+        // future need refactoring this
+
         // fieldName => check?
         $fields = [
             'title' => null,
@@ -131,7 +183,37 @@ class Post extends Controller
 
         $data = $this->fieldsCheck($fields, $request->toArray());
 
-        // todo add tags
+        //todo add update tags
+
+        //        $oldTags = (Posts::where('slug', $slug)->first())->keywords;
+        //        dd($oldTags);
+        //
+        //        $tagsCollection = $this->getTags($request);
+
+        // find new tags (keywords)
+        // find differences between exist keyword and new
+        //        $tagsDiff = $tagsCollection->diff(Keywords::whereIn('route', $tagsCollection)->get()->map(function ($item, $key) {
+        //            return $item->route;
+        //        }));
+        //
+        //        $this->getKeywords($slug);
+        //
+        //        dd($tagsDiff);
+
+        // build keywords array
+        //        $keywords = $tagsDiff->map(function ($item, $key) {
+        //            return [
+        //                'keyword' => ucfirst($item),
+        //                'route' => $item,
+        //                'is_favourite' => 0,
+        //            ];
+        //        });
+
+        // insert new tags to keyword table
+
+        // find difference between old and new tags
+
+        // delete old relations keywords <-> posts
 
         if ($request->input('newSlug')) {
             try {

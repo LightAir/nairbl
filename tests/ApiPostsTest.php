@@ -32,10 +32,10 @@ class ApiPostsTest extends TestCase
         $this->json('POST', '/api/post', [
             'title' => 'test post',
             'text' => 'text post',
-            'tags' => 'newtag',
-            'isPublished' => 1,
-            'isCommentable' => 1,
-            'isFavourite' => 1
+            'tags' => 'newtag, qwe, wer, ert',
+            'is_published' => 1,
+            'is_commentable' => 1,
+            'is_favourite' => 1,
         ], $this->headers)->seeJson(
             [
                 'success' => [
@@ -149,5 +149,29 @@ class ApiPostsTest extends TestCase
         );
     }
 
-    //todo add test for update posts
+    /**
+     * Test for update posts
+     */
+    public function testUpdatePost()
+    {
+
+        $postData = [
+            'title' => 'test post',
+            'text' => 'text post',
+            'tags' => 'qwe, wer, ert, test 8',
+            'is_published' => 1,
+            'is_commentable' => 1,
+            'is_favourite' => 1,
+            'update_at' => date('Y-m-d H:i:s')
+        ];
+
+        $this->json('PUT', '/api/post/ultricies_nullam_nisl_metus_', $postData, $this->headers)->seeJson(
+            [
+                'success' => [
+                    'message' => 'ok',
+                    'status_code' => 200
+                ]
+            ]
+        );
+    }
 }

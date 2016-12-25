@@ -44,7 +44,7 @@ class ApiAuthTest extends TestCase
     public function testInvalidToken()
     {
         $this->json('POST', '/api/auth/login', [
-            'email' => 'admin@nairbl.local',
+            'email' => 'baduser@nairbl.local',
             'password' => 'admin'
         ]);
 

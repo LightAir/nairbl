@@ -8,7 +8,7 @@ Nairbl - is blog backend. Based on Lumen PHP Framework. Used dingo, jwt, fractal
 [![Build Status](https://travis-ci.org/LightAir/nairbl-server.svg?branch=master)](https://travis-ci.org/LightAir/nairbl-server)
 [![codecov](https://codecov.io/gh/LightAir/nairbl-server/branch/master/graph/badge.svg)](https://codecov.io/gh/LightAir/nairbl-server)
 [![Codacy 
-Badge](https://api.codacy.com/project/badge/Grade/09454f45c2bb42d5b95464fcc0332e0c)](https://www.codacy.com/app/the/nairbl-server?utm_source=github.com&amp;$
+Badge](https://api.codacy.com/project/badge/Grade/09454f45c2bb42d5b95464fcc0332e0c)](https://www.codacy.com/app/the/nairbl-server?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LightAir/nairbl-server&amp;utm_campaign=Badge_Grade)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 
